@@ -21,8 +21,7 @@ if(CMAKE_VERSION VERSION_LESS "3.20.0")
 endif()
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Network REQUIRED)
+find_package(PkgConfig REQUIRED)
 
 set(SRC_FILES
 		main.cpp
@@ -43,9 +42,7 @@ add_executable(${PROJECT_NAME} ${SRC_FILES} ${HEADER_FILES} ${UI_FILES} )
 
 add_definitions(-DQT_NO_VERSION_TAGGING)
 
-target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
-
-qt5_use_modules(${PROJECT_NAME} Core Network)
+target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::Network)
 
 include_directories(.)
 
